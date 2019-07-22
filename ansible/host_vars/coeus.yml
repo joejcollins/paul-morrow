@@ -1,0 +1,5 @@
+[node-exporter:chldren]
+[prometheus-server:children]
+[grafana-server:children]
+[alertmanager-server:children]
+[coeus-server:children]

@@ -1,0 +1,19 @@
+# file: production
+
+[node-exporter]
+134.209.25.208
+
+[prometheus-server]
+134.209.25.208
+
+[grafana-server]
+134.209.25.208
+
+[alertmanager-server]
+134.209.25.208
+
+[coeus-server]
+134.209.25.208
+
+[coeus-client]
+
