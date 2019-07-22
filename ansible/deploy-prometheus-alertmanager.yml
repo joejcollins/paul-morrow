@@ -1,0 +1,19 @@
+- hosts: all
+  roles:
+  - alertmanager
+
+  vars:
+#  - alertmanager_web_listen_address: "0.0.0.0"
+#  - alertmanager_web_external_url: "http://localhost/"
+  - alertmanager_slack_api_url: "https://hooks.slack.com/services/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"
+  - alertmanager_receivers:
+     - name: slack
+       slack_configs:
+         - send_resolved: true
+           channel: '#alerts'
+  - alertmanager_route:
+     group_by: ['alertname', 'cluster', 'service']
+     group_wait: 30s
+     group_interval: 5m
+     repeat_interval: 4h
+     receiver: slack
