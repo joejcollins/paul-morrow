@@ -22,8 +22,8 @@ rbenv install 2.6.3
 rbenv global 2.6.3
 ruby -v
 
-sudo gem install jekyll bundler
-bundle install
+sudo gem install jekyll 
+sudo gem install bundler
 ```
 
-To serve the Jekyll site run `bundle exec jekyll serve --host 0.0.0.0 --port 8080`
+To serve the Jekyll site install the bundle `bundle install` then run `bundle exec jekyll serve --host 0.0.0.0 --port 8080`
