@@ -41,7 +41,7 @@ grafana_server:
 # Security
 grafana_security:
   admin_user: admin
-  admin_password: ""
+  admin_password: "Strawberry1"
 #  secret_key: ""
 #  login_remember_days: 7
 #  cookie_username: grafana_user

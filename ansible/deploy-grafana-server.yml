@@ -1,4 +1,4 @@
 - hosts: coeus
   become: yes
   roles:
-    - role: ansible-node-exporter
+    - role: ansible-grafana

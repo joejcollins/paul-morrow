@@ -1,4 +1,4 @@
-- hosts: prometheus-servers
+- hosts: coeus
   roles:
   - ansible-prometheus
 
@@ -17,7 +17,7 @@
 #        path_prefix: "alertmanager/"
         static_configs:
 #        - targets: ["alertmanager.infrastructure.k8s.contensis.cloud"]
-        - targets: ["10.128.67.5:9093"]
+        - targets: ["127.0.0.1:9093"]
     prometheus_global:
       scrape_interval: 10s
       scrape_timeout: 10s
@@ -39,7 +39,7 @@
     prometheus_targets:
       - node:
         - targets:
-          - 10.128.38.4:9100
+          - 134.209.25.208:9100
       - coeus:
         - targets:
           - 10.128.38.4:8080

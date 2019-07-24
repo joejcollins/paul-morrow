@@ -1,5 +1,12 @@
+[coeus]
+134.209.25.208 host_name=coeus ansible_ssh_user=root ansible_port=22 ansible_ssh_host=coeus 
+
 [node-exporter:chldren]
-[prometheus-server:children]
-[grafana-server:children]
-[alertmanager-server:children]
+coeus
+[ansible-prometheus:children]
+coeus
+[ansible-grafana:children]
+coeus
+[ansible-alertmanager:children]
+coeus
 [coeus-server:children]
