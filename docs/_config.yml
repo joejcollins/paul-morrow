@@ -16,7 +16,7 @@ kramdown:
   hard_wrap: false
 
 url: https://www.blackradley.com
-basurl: /dinmore
+basurl: /coeus
 timezone: GMT
 
 plugins:
