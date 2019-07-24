@@ -4,7 +4,7 @@ https://github.com/prometheus/client_python
 
 pip install prometheus_client
 
-#Visual studio install extension
+#Install VSCode extension
 
-promethues-client-python-snippets
+prometheus-client-python-snippets
 
