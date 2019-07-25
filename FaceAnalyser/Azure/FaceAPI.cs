@@ -6,22 +6,20 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using Newtonsoft.Json;
 
 namespace FaceAnalyser.Azure
 {
     public class FaceAPI
     {
-        const string subscriptionKey = "84040947493b4fd685ab2c2b5a1d5714";
         const string uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
 
-        public static async Task<string> MakeAnalysisRequest(string imgPath)
+        public static async Task<string> MakeAnalysisRequest()
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response;
 
             // request header
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _azureAPIkey);
 
             // request parameters
             string requestParameters = "returnFaceId=true&returnFaceLandmarks=false" +
