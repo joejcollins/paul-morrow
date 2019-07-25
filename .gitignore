@@ -115,5 +115,5 @@ Gemfile.lock
 
 #vs
 .vs
-FaceAnalyser/bin/
-FaceAnalyser/obj/
+*/bin/
+*/obj/
