@@ -112,3 +112,9 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 Gemfile.lock
+
+#vs
+.vs
+*/bin/
+*/obj/
+*.user
