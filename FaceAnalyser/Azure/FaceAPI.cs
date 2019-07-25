@@ -32,7 +32,7 @@ namespace FaceAnalyser.Azure
             string uri = uriBase + "?" + requestParameters;
 
             // request body
-            byte[] byteData = GetImageAsByteArray(@"C:\Projects\Museum of the Future\Coeus\coeus\FaceAnalyser\Images\familyphoto.jpg");
+            byte[] byteData = GetImageAsByteArray(@"C:\Projects\Museum of the Future\Coeus\coeus\FaceAnalyser\Images\sample-image.jpg");
 
             // make request
             using (ByteArrayContent content = new ByteArrayContent(byteData))
