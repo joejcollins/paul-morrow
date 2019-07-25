@@ -11,25 +11,14 @@ using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using FaceAnalyser.Azure;
 
 namespace FaceAnalyser
 {
     public class Program
     {
-        const string subscriptionKey = "84040947493b4fd685ab2c2b5a1d5714";
-        const string uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
-
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
-
-            FaceAPI.MakeAnalysisRequest(subscriptionKey, uriBase);
-        }
-
-        private static void AnalyseImage()
-        {
-
+            CreateWebHostBuilder(args).Build().Run(); 
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

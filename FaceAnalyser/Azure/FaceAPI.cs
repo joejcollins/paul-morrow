@@ -12,7 +12,10 @@ namespace FaceAnalyser.Azure
 {
     public class FaceAPI
     {
-        public static async void MakeAnalysisRequest(string subscriptionKey, string uriBase)
+        const string subscriptionKey = "84040947493b4fd685ab2c2b5a1d5714";
+        const string uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+
+        public static async Task<string> MakeAnalysisRequest()
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response;
@@ -29,20 +32,22 @@ namespace FaceAnalyser.Azure
             string uri = uriBase + "?" + requestParameters;
 
             // request body
-            byte[] byteData = GetImageAsByteArray("imagePathGoesHere");
+            byte[] byteData = GetImageAsByteArray(@"C:\Projects\Museum of the Future\Coeus\coeus\FaceAnalyser\Images\familyphoto.jpg");
 
             // make request
             using (ByteArrayContent content = new ByteArrayContent(byteData))
             {
                 // set headers
                 content.Headers.ContentType =
-                    new MediaTypeHeaderValue("application/json");
+                    new MediaTypeHeaderValue("application/octet-stream");
 
                 // execute
                 response = await client.PostAsync(uri, content);
 
                 // get response
                 string contentString = await response.Content.ReadAsStringAsync();
+
+                return contentString;
             }
 
                 

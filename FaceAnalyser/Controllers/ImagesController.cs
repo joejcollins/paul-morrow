@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using FaceAnalyser.Azure;
 
 namespace FaceAnalyser.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ImagesController : ControllerBase
     {
-        // GET api/values
+        // GET api/images
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return FaceAPI.MakeAnalysisRequest().Result;
         }
 
         // GET api/values/5
