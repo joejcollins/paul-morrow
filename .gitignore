@@ -112,3 +112,8 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 Gemfile.lock
+
+#vs
+.vs
+FaceAnalyser/bin/
+FaceAnalyser/obj/
