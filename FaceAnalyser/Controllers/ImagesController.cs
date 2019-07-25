@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FaceAnalyser.Azure;
+using Microsoft.Extensions.Configuration;
 
 namespace FaceAnalyser.Controllers
 {
@@ -11,6 +12,13 @@ namespace FaceAnalyser.Controllers
     [ApiController]
     public class ImagesController : ControllerBase
     {
+        public IConfiguration Configuration { get; set; }
+
+        public ImagesController(IConfiguration config)
+        {
+            Configuration = config;
+        }
+
         // GET api/images
         [HttpGet]
         public ActionResult<string> Get()

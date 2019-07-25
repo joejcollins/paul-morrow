@@ -15,6 +15,8 @@ namespace FaceAnalyser
 {
     public class Startup
     {
+        private string _azureAPIkey = null;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,6 +28,7 @@ namespace FaceAnalyser
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            _azureAPIkey = Configuration["Azure:SubscriptionKey"];
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +37,7 @@ namespace FaceAnalyser
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+          
             }
             else
             {
