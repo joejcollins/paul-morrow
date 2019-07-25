@@ -15,7 +15,7 @@ namespace FaceAnalyser.Azure
         const string subscriptionKey = "84040947493b4fd685ab2c2b5a1d5714";
         const string uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
 
-        public static async Task<string> MakeAnalysisRequest()
+        public static async Task<string> MakeAnalysisRequest(string imgPath)
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response;
