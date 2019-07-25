@@ -43,8 +43,6 @@ namespace FaceAnalyser.Azure
 
                 // get response
                 string contentString = await response.Content.ReadAsStringAsync();
-
-
             }
 
                 

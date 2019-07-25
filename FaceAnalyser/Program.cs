@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using FaceAnalyser.Azure;
+
 namespace FaceAnalyser
 {
     public class Program
@@ -21,6 +23,8 @@ namespace FaceAnalyser
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+
+            FaceAPI.MakeAnalysisRequest(subscriptionKey, uriBase);
         }
 
         private static void AnalyseImage()
