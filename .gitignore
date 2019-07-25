@@ -117,3 +117,4 @@ Gemfile.lock
 .vs
 */bin/
 */obj/
+*.user
