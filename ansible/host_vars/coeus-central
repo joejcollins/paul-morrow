@@ -1,0 +1,5 @@
+[coeus-central]
+10.128.72.4 host_name=coeus-central ansible_ssh_user=root ansible_port=2022 ansible_ssh_host=coeus-central 
+
+[node-exporter:chldren]
+coeus-central
