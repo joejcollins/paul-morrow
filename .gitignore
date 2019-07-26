@@ -118,3 +118,6 @@ Gemfile.lock
 */bin/
 */obj/
 *.user
+
+node_modules
+package-lock.json

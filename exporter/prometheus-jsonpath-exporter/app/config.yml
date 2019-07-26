@@ -15,4 +15,6 @@ metrics:
 - name: male_count # Number of males
   description: Number of faces
   path: count($.faceAttributes[@.gender is "male"])  
-
+- name: average_age # Average Age
+  description: average_age
+  path: avg($.faceAttributes[@.age])

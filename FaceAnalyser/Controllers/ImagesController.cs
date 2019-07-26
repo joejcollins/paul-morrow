@@ -23,14 +23,14 @@ namespace FaceAnalyser.Controllers
         [HttpGet]
         public ActionResult<string> Get()
         {
-            return FaceAPI.MakeAnalysisRequest().Result;
+            return FaceAPI.MakeAnalysisRequest("").Result;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        // GET api/images/api/images/192.168.0.141:5000
+        [HttpGet("{camera}")]
+        public ActionResult<string> Get(string camera)
         {
-            return "value";
+            return FaceAPI.MakeAnalysisRequest(camera).Result;
         }
 
         // POST api/values
