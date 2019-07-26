@@ -21,7 +21,7 @@ namespace FaceAnalyser.Azure
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response;
-            byte[] byteData = FaceDetection.IsFace("http://192.168.0.141:5000/api/capture");
+            byte[] byteData = FaceDetection.IsFace("http://192.168.0.150:5000/api/capture");
 
             if (byteData != null)
             {
@@ -51,7 +51,7 @@ namespace FaceAnalyser.Azure
 
                     // get response
                     string contentString = await response.Content.ReadAsStringAsync();
-
+                    await Zengenti.ZengentiProvider.SaveToContensis(contentString);
                     return contentString;
                 }
             }
