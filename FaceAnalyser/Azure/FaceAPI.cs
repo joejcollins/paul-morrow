@@ -25,13 +25,13 @@ namespace FaceAnalyser.Azure
 
             if (!String.IsNullOrEmpty(camera))
             {
-                byteData = FaceDetection.IsFace($"http://{camera}/api/capture");
+                //byteData = FaceDetection.IsFace($"http://{camera}/api/capture");
             }
             else
-            {
+            {                
                 return "need camera address";
             }
-            
+            byteData = GetImageAsByteArray($"http://{camera}/api/capture");
 
             if (byteData != null)
             {
