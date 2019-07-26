@@ -1,0 +1,15 @@
+exporter_port: {{ coeus_exporter_web_port }} # Port on which prometheus can call this exporter to get metrics
+log_level: {{ log_level }}
+json_data_url: {{ coeus_json_data_url }} # Url to get json data used for fetching metric values
+metric_name_prefix: {{ coeus_metric_prefix }} # All metric names will be prefixed with this value
+metrics:
+- name: face_count # Number of faces
+  description: Number of faces
+  path: count($.faceId)
+- name: female_count # Number of females
+  description: Number of faces
+  path: count($.gender is "female")
+- name: male_count # Number of males
+  description: Number of faces
+  path: count($.gender is "male")
+
