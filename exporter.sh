@@ -1,1 +1,1 @@
-python coeus/exporter/prometheus-jsonpath-exporter/app/exporter.py coeus/exporter/prometheus-jsonpath-exporter/app/config.yml
+python /exporter/prometheus-jsonpath-exporter/app/exporter.py /exporter/prometheus-jsonpath-exporter/app/config.yml
