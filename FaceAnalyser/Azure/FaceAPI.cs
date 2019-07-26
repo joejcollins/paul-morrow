@@ -17,11 +17,21 @@ namespace FaceAnalyser.Azure
         const string subscriptionKey = "84040947493b4fd685ab2c2b5a1d5714";
         const string uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
 
-        public static async Task<string> MakeAnalysisRequest()
+        public static async Task<string> MakeAnalysisRequest(string camera)
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response;
-            byte[] byteData = FaceDetection.IsFace("http://192.168.0.141:5000/api/capture");
+            byte[] byteData = null;
+
+            if (!String.IsNullOrEmpty(camera))
+            {
+                byteData = FaceDetection.IsFace($"http://{camera}/api/capture");
+            }
+            else
+            {
+                return "need camera address";
+            }
+            
 
             if (byteData != null)
             {
