@@ -1,6 +1,7 @@
 ﻿#define Default // or Limits
 
 using System;
+using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading;
@@ -15,20 +16,17 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.AspNetCore.Server.Kestrel.Core.Features;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
-using System.IO;
 namespace coeusCapture
 {
     public class Startup
     {
         VideoCapture capture;
         Mat frame;
-        Bitmap image;
-        private Thread camera;
-        int isCameraRunning = 0;
+        Bitmap bitmapImage;
         public void Configure(IApplicationBuilder app)
         {
-            app.UseStaticFiles(); // For the wwwroot folder
-
+            app.UseStaticFiles();
+            app.UseMvc();
 
             app.Run(async (context) =>
             {
@@ -42,12 +40,16 @@ namespace coeusCapture
                 else {
                     Console.WriteLine("Camera has started");
                     capture.Read(frame);
-                    image = BitmapConverter.ToBitmap(frame);
+                    bitmapImage = BitmapConverter.ToBitmap(frame);
                 }
-                image.Save(string.Format(@"capture.png", Guid.NewGuid()), ImageFormat.Png);
+                bitmapImage.Save( string.Format("capture.png"), ImageFormat.Png);
                 Console.WriteLine("fingers crossed...");
-                await context.Response.WriteAsync("<img src='/capture.png' /> ");
+
+                await context.Response.WriteAsync("<img src='capture.png' /> ");
                 
+
+
+
             });
 
         }

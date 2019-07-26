@@ -1,0 +1,35 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Prometheus Coeus Exporter
+After=network-online.target
+
+[Service]
+Type=simple
+User={{ coeus_exporter_system_user }}
+Group={{ coeus_exporter_system_group }}
+ExecStart=/usr/local/bin/coeus_exporter \
+    --web.listen-address={{ coeus_exporter_web_listen_address }}
+
+SyslogIdentifier=coeus_exporter
+Restart=always
+
+PrivateTmp=yes
+{% for m in ansible_mounts if m.mount == '/home' %}
+ProtectHome=read-only
+{% else %}
+ProtectHome=yes
+{% endfor %}
+NoNewPrivileges=yes
+
+{% if coeus_exporter_systemd_version | int >= 232 %}
+ProtectSystem=strict
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=yes
+{% else %}
+ProtectSystem=full
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target
