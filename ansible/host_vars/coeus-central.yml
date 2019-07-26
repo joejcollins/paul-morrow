@@ -1,0 +1,9 @@
+[coeus-central]
+10.128.72.4 host_name=coeus-central ansible_ssh_user=headhoncho ansible_port=2022 ansible_ssh_host=coeus-central
+
+
+sudo_ssh_pass=Zengenti987
+ansible_sudo_pass=Zengenti987
+
+[node-exporter:chldren]
+coeus-central
