@@ -42,7 +42,8 @@
           - 134.209.25.208:9100
       - coeus:
         - targets:
-          - 10.128.38.4:8080
+          - 185.18.139.5:9100
+          - 185.18.139.5:8000
     prometheus_alert_rules:
 
     # Minor Alerts #
