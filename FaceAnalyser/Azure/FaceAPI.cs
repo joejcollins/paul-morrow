@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -32,7 +33,7 @@ namespace FaceAnalyser.Azure
             string uri = uriBase + "?" + requestParameters;
 
             // request body
-            byte[] byteData = GetImageAsByteArray(@"C:\Projects\Museum of the Future\Coeus\coeus\FaceAnalyser\Images\sample-image.jpg");
+            byte[] byteData = GetImageAsByteArray("http://192.168.0.141:5000/api/capture");
 
             // make request
             using (ByteArrayContent content = new ByteArrayContent(byteData))
@@ -53,12 +54,22 @@ namespace FaceAnalyser.Azure
                 
         }
 
-        private static byte[] GetImageAsByteArray(string imageFilePath)
+        private static byte[] GetImageAsByteArray(string imagePath)
         {
-            using (FileStream fileStream =  new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
+            if(imagePath.Contains("http"))
             {
-                BinaryReader binaryReader = new BinaryReader(fileStream);
-                return binaryReader.ReadBytes((int)fileStream.Length);
+                using (var webClient = new WebClient())
+                {
+                    return webClient.DownloadData(imagePath);
+                }
+            }
+            else
+            {
+                using (FileStream fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+                {
+                    BinaryReader binaryReader = new BinaryReader(fileStream);
+                    return binaryReader.ReadBytes((int)fileStream.Length);
+                }
             }
         }
     }
