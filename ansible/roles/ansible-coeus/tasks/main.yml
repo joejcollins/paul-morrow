@@ -1,0 +1,4 @@
+---
+- hosts: ceous-central
+  gather_facts: false
+  tasks:
