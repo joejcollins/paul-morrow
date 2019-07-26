@@ -1,4 +1,0 @@
-- hosts: coeus-central
-  become: yes
-  roles:
-    - role: ansible-coeus-exporter

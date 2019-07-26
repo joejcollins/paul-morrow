@@ -1,19 +1,18 @@
----
-- hosts: ceous-central
-  gather_facts: false
-  tasks:
-
 # Prerequisites
 - name: Install Pre-Requisites
   apt:
     name:
-      - pip
+      - python-pip
       - python2.7
       - python-psutil
     update_cache: true
     state: present
   become: true
   tags: install
+
+#- easy_install:
+#    name: pip
+#    state: latest
 
 - pip:
     name:
