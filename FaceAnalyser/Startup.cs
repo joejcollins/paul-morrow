@@ -42,6 +42,7 @@ namespace FaceAnalyser
             else
             {
                 app.UseHsts();
+                app.UseUrls("http://*:80/");
             }
 
             //app.UseHttpsRedirection();
