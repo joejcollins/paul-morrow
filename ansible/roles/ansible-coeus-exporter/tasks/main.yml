@@ -1,0 +1,122 @@
+# Prerequisites
+- name: Install Pre-Requisites
+  apt:
+    name:
+      - python-pip
+      - python2.7
+      - python-psutil
+    update_cache: true
+    state: present
+  become: true
+  tags: install
+
+#- easy_install:
+#    name: pip
+#    state: latest
+
+- pip:
+    name:
+      - pytz
+      - objectpath
+      - prometheus_client
+      - pyYAML
+
+# Set up user and groups to run exporter
+- name: Create the coeus_exporter group
+  group:
+    name: "{{ coeus_exporter_system_group }}"
+    state: present
+    system: true
+  when: coeus_exporter_system_group != "root"
+
+- name: Create the coeus_exporter user
+  user:
+    name: "{{ coeus_exporter_system_user }}"
+    groups: "{{ coeus_exporter_system_group }}"
+    append: true
+    shell: /usr/sbin/nologin
+    system: true
+    createhome: false
+    home: /
+  when: coeus_exporter_system_user != "root"
+
+# Download the exporter
+- name: Download coeus_exporter to local folder
+  become: false
+  get_url:
+    url: "https://github.com/blackradley/coeus/tree/master/exporter/coeus_exporter.tar.gz"
+    dest: "/tmp/coeus_exporter.tar.gz"
+  register: _download
+  until: _download is succeeded
+  retries: 5
+  delay: 2
+  delegate_to: localhost
+  check_mode: false
+
+- name: Unpack node_exporter binary
+  become: false
+  unarchive:
+    src: "/tmp/coeus_exporter.tar.gz"
+    dest: "/tmp"
+    creates: "/tmp/ceous_exporter/coeus_exporter"
+  delegate_to: localhost
+  check_mode: false
+
+- name: Create /usr/local/bin
+  file:
+    path: /usr/local/bin
+    state: directory
+    mode: 0755
+
+# Copy config file 
+- name: Copy the Coeus config
+  template:
+    src: config.yml.j2
+    dest: /etc/coeus/config.yml
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart coeus_exporter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- name: Copy the Coeus Exporter systemd service file
+  template:
+    src: coeus_exporter.service.j2
+    dest: /etc/systemd/system/coeus_exporter.service
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart coeus_exporter

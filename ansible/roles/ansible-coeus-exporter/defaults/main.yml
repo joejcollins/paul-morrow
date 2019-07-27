@@ -1,0 +1,9 @@
+---
+coeus_exporter_web_listen_address: "0.0.0.0"
+coeus_exporter_web_port: "8000"
+log_level: "info"
+coeus_json_data_url: "http://10.128.72.4/api/images"
+coeus_metric_prefix: "coeus"
+coeus_exporter_system_group: "coeus-exp"
+coeus_exporter_system_user: "{{ coeus_exporter_system_group }}"
+

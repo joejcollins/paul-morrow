@@ -1,0 +1,20 @@
+exporter_port: 8000 # Port on which prometheus can call this exporter to get metrics
+log_level: info
+json_data_url: http://z-zenhub-web1-preview-crm-zenhub.cloud.contensis.com/face.json #http://10.128.72.4/face.json # Url to get json data used for fetching metric values
+metric_name_prefix: coeus # All metric names will be prefixed with this value
+metrics:
+#- name: total_nodes # Final metric name will be kong_cluster_total_nodes
+ # description: Total number of nodes in kong cluster
+#  path: $.total
+- name: face_count # Number of faces
+  description: Number of faces
+  path: count($.faceId)
+- name: female_count # Number of females
+  description: Number of faces
+  path: count($.faceAttributes[@.gender is "female"])   
+- name: male_count # Number of males
+  description: Number of faces
+  path: count($.faceAttributes[@.gender is "male"])  
+- name: average_age # Average Age
+  description: average_age
+  path: avg($.faceAttributes[@.age])

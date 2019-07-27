@@ -1,30 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\Museum of the Future\\Coeus\\coeus\\FaceAnalyser\\FaceAnalyser.csproj": {}
+    "/Users/nic/Documents/Git/coeus/FaceAnalyser/FaceAnalyser.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\Museum of the Future\\Coeus\\coeus\\FaceAnalyser\\FaceAnalyser.csproj": {
+    "/Users/nic/Documents/Git/coeus/FaceAnalyser/FaceAnalyser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\Museum of the Future\\Coeus\\coeus\\FaceAnalyser\\FaceAnalyser.csproj",
+        "projectUniqueName": "/Users/nic/Documents/Git/coeus/FaceAnalyser/FaceAnalyser.csproj",
         "projectName": "FaceAnalyser",
-        "projectPath": "C:\\Projects\\Museum of the Future\\Coeus\\coeus\\FaceAnalyser\\FaceAnalyser.csproj",
-        "packagesPath": "C:\\Users\\a.munir\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Museum of the Future\\Coeus\\coeus\\FaceAnalyser\\obj\\",
+        "projectPath": "/Users/nic/Documents/Git/coeus/FaceAnalyser/FaceAnalyser.csproj",
+        "packagesPath": "/Users/nic/.nuget/packages/",
+        "outputPath": "/Users/nic/Documents/Git/coeus/FaceAnalyser/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\a.munir\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/nic/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +42,7 @@
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.1.1, )",
+              "version": "[2.1.12, )",
               "autoReferenced": true
             },
             "Microsoft.AspNetCore.Razor.Design": {
@@ -53,9 +51,14 @@
               "version": "[2.1.2, )"
             },
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[2.1.0, )",
+              "version": "[2.1.12, )",
               "autoReferenced": true
+            },
+            "OpenCvSharp3-AnyCPU": {
+              "target": "Package",
+              "version": "[4.0.0.20181129, )"
             }
           },
           "imports": [
@@ -63,6 +66,11 @@
           ],
           "assetTargetFallback": true,
           "warn": true
+        }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
         }
       }
     }
