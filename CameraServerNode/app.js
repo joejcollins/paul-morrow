@@ -44,4 +44,8 @@ server.get('/metrics', (req, res) => {
 	res.end(register.metrics());
 });
 
+server.get('/peeps', (req, res) => {
+    res.send('I see dead people')
+});
+
 server.listen(port, () => console.log(`Example app listening on port ${port}!`))
