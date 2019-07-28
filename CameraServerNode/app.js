@@ -25,7 +25,7 @@ var opts = {
 };
 
 //Creates webcam instance
-var webcam = node_webcam.create( opts );
+const webcam = node_webcam.create( opts );
 
 server.get('/', function (req, res) {
     webcam.capture(__dirname + '/capture', function( err, data ) {
@@ -44,8 +44,21 @@ server.get('/metrics', (req, res) => {
 	res.end(register.metrics());
 });
 
+
+
+const tf = require('@tensorflow/tfjs')
+
 server.get('/peeps', (req, res) => {
-    res.send('I see dead people')
+    
+ 
+    const img = __dirname + '/capture.jpg';
+     
+    // Load the model.
+    const model = await cocoSsd.load();
+     
+
+    const predictions = model.detect(img, 10);    
+    res.send(predictions)
 });
 
 server.listen(port, () => console.log(`Example app listening on port ${port}!`))
