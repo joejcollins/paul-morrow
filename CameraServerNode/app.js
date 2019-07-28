@@ -46,19 +46,20 @@ server.get('/metrics', (req, res) => {
 
 
 
-const tf = require('@tensorflow/tfjs')
+const tf = require('@tensorflow/tfjs-node')
+const canvas = require('canvas')
+const faceapi = require('face-api.js')
+
 
 server.get('/peeps', (req, res) => {
-    
- 
-    const img = __dirname + '/capture.jpg';
-     
-    // Load the model.
-    const model = await cocoSsd.load();
-     
+    const filename = __dirname + '/capture.jpg';
+    //Monkey patch
+    const { Canvas, Image, ImageData } = canvas
+    faceapi.env.monkeyPatch({ Canvas, Image, ImageData })
 
-    const predictions = model.detect(img, 10);    
-    res.send(predictions)
+
+     
+    res.send('I see dead people')
 });
 
 server.listen(port, () => console.log(`Example app listening on port ${port}!`))
