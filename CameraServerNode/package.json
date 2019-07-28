@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "@tensorflow/tfjs-node": "^1.2.5",
+    "canvas": "^2.5.0",
     "express": "^4.17.1",
     "face-api.js": "^0.20.1",
     "node-webcam": "^0.5.0",
