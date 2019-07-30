@@ -1,5 +1,5 @@
 [coeus]
-134.209.25.208 host_name=coeus ansible_ssh_user=root ansible_port=22 ansible_ssh_host=coeus 
+192.168.0.162 host_name=coeus ansible_ssh_user=root ansible_port=22 ansible_ssh_host=coeus 
 
 [node-exporter:chldren]
 coeus

@@ -29,8 +29,8 @@ const webcam = node_webcam.create( opts );
 
 server.get('/', function (req, res) {
     webcam.capture(__dirname + '/capture', function( err, data ) {
-        res.sendFile(data);
-        //res.sendFile(__dirname + '/capture.jpg');
+        //res.sendFile(data);
+        res.sendFile(__dirname + '/capture.jpg');
     } );
 });
 
@@ -52,14 +52,22 @@ const faceapi = require('face-api.js')
 
 
 server.get('/peeps', (req, res) => {
-    const filename = __dirname + '/capture.jpg';
+    const imageFile = __dirname + '/capture.jpg';
     //Monkey patch
     const { Canvas, Image, ImageData } = canvas
     faceapi.env.monkeyPatch({ Canvas, Image, ImageData })
+    isFace = isTherePeople(imageFile);
 
-
-     
-    res.send('I see dead people')
+    //faceapi.nets.tinyFaceDetector.loadFromUri('/models')
+    //const img = faceapi.bufferToImage(imgFile)
+    //const detections = faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
+    res.send('I see dead people' + isFace)
 });
+
+
+async function isTherePeople(imageFile){
+    //const image = await faceapi.bufferToImage(imageFile);
+    return true;
+}
 
 server.listen(port, () => console.log(`Example app listening on port ${port}!`))
