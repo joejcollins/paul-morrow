@@ -122,3 +122,5 @@ Gemfile.lock
 # Node 
 node_modules
 package-lock.json
+
+.vs/
