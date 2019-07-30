@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 opencv-python-headless = "*"
 flask = "*"
+cognitive-face = "*"
 
 [requires]
 python_version = "3.7"

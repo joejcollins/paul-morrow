@@ -2,6 +2,8 @@
 from flask import Flask
 from flask import send_file
 import cv2
+import cognitive_face as face
+
 APP = Flask(__name__)
 
 @APP.route('/')
@@ -19,6 +21,26 @@ def capture_image():
     video_capture.release()
     return send_file('capture.png', mimetype='image/png')
 
+@APP.route('/faces')
+def count_faces():
+    """ Count the number of faces """
+    capture_image()
+    face_cascade = cv2.CascadeClassifier('data/haarcascade_frontalface_alt.xml')
+    image = cv2.imread('capture.png')
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    # Detect faces in the image
+    faces = face_cascade.detectMultiScale(
+        gray,
+        scaleFactor=1.1,
+        minNeighbors=5,
+        minSize=(30, 30),
+        flags=cv2.CASCADE_SCALE_IMAGE
+    )
+    return "Found {0} faces!".format(len(faces))
+
+@APP.route('/json')
+def azure_face_response():
+    """ Return the Azure face stuff """
 
 
 if __name__ == '__main__':
