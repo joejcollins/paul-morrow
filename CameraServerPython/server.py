@@ -2,7 +2,8 @@
 from flask import Flask
 from flask import send_file
 import cv2
-import cognitive_face as face
+import cognitive_face as azure
+import secret
 
 APP = Flask(__name__)
 
@@ -21,10 +22,14 @@ def capture_image():
     video_capture.release()
     return send_file('capture.png', mimetype='image/png')
 
-@APP.route('/faces')
+@APP.route('/how_many_faces')
+def how_many_faces():
+    """ Return how many faces there are """
+    capture_image()
+    return "Found {0} faces!".format(count_faces())
+
 def count_faces():
     """ Count the number of faces """
-    capture_image()
     face_cascade = cv2.CascadeClassifier('data/haarcascade_frontalface_alt.xml')
     image = cv2.imread('capture.png')
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -36,11 +41,23 @@ def count_faces():
         minSize=(30, 30),
         flags=cv2.CASCADE_SCALE_IMAGE
     )
-    return "Found {0} faces!".format(len(faces))
+    return len(faces)
 
 @APP.route('/json')
 def azure_face_response():
     """ Return the Azure face stuff """
+    capture_image()
+    if count_faces() > 0:
+        key = secret.key
+        azure.Key.set(key)
+        url = 'https://coeus-face.cognitiveservices.azure.com/face/v1.0' 
+        azure.BaseUrl.set(url)
+        result = azure.face.detect('capture.png', attributes="age,gender")
+        return "{}".format(result)
+    else:
+        return "Can't see anyone"
+
+
 
 
 if __name__ == '__main__':
