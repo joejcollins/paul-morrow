@@ -3,6 +3,7 @@ from flask import Flask
 from flask import send_file
 import cv2
 import cognitive_face as azure
+import prometheus_client
 import secret
 
 APP = Flask(__name__)
@@ -57,8 +58,9 @@ def azure_face_response():
     else:
         return "Can't see anyone"
 
-
-
+@APP.route('/metrics', methods=['GET'])
+def metrics():
+    return prometheus_client.generate_latest(), 200
 
 if __name__ == '__main__':
     # local development server. 
