@@ -1,0 +1,42 @@
+/* People */
+.person {
+    display:block;
+    position:absolute;
+    width:30px;
+    height:30px;
+    background:rgba(0,0,0,0.1);
+    border-radius:100%;
+    margin-left:-15px;
+    margin-top:-15px;
+    border:2px solid rgba(255,255,255,0.8);
+    &:hover{
+      border:2px solid rgba(255,255,255,1);
+      z-index:600;
+    }
+    
+    .person-popover {
+      position: absolute;
+      display: none;
+      opacity:0;
+      bottom: 90%;
+      left: 90%;
+      font-size: 13px;
+      padding: 7px 10px;
+      min-width: 100px;
+      z-index: 500;
+      transition: all 250ms;
+      color:#fff;
+      background: #542D7A;
+    }
+   
+    &:hover {
+        .person-popover {
+          opacity:1;
+          display: block;
+          -webkit-animation: fade-in .1s linear 1, move-up .2s linear 1;
+          -moz-animation: fade-in .1s linear 1, move-up .2s linear 1;
+          -ms-animation: fade-in .1s linear 1, move-up .2s linear 1;
+        }
+      }
+  }
+  
