@@ -1,0 +1,32 @@
+// 
+// Video box - a video cam representation to house the video results/player/persons
+// 
+
+.video-box {
+    position: relative;
+    min-height:calc(1080px/2);
+
+    &:after {
+        content:"";
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background: rgb(0,0,0);
+        background: linear-gradient(35deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    }
+    .video-box__dataitem {
+        position: absolute;
+        z-index:10;
+    }
+}
+
+.dataviz {
+    position:relative;
+    // width:calc(1920px/2);
+    height:calc(1080px/2);
+    // border:1px solid #000;
+  /*   background:#efefef; */
+    overflow: hidden;
+  }
