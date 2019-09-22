@@ -10,7 +10,6 @@ opencv-python-headless = "*"
 flask = "*"
 cognitive-face = "*"
 pip = "*"
-installprometheus-client = "*"
 prometheus-client = "*"
 
 [requires]
