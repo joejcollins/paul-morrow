@@ -1,1 +1,0 @@
-key = 'put your cognitive services key here'
