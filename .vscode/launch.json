@@ -1,9 +1,31 @@
 {
-   // Use IntelliSense to find out which attributes exist for C# debugging
-   // Use hover for the description of the existing attributes
-   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
    "version": "0.2.0",
    "configurations": [
-       
+    {
+        "name": "Flask: camera server",
+        "type": "python",
+        "request": "launch",
+        "module": "flask",
+        "cwd": "${workspaceFolder}/camera",
+        "env": {
+            "FLASK_APP": "server",
+
+        },
+        "args": [
+            "run",
+            "--no-debugger",
+            "--no-reload",
+            "--port", "5000"
+        ],
+        "jinja": true
+    },
+    {
+        "name": "Python: Current File (Integrated Terminal)",
+        "type": "python",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal",
+        "cwd": "${fileDirname}"
+    },
     ]
 }

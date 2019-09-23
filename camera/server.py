@@ -1,4 +1,5 @@
 """ Cheap as chips """
+
 from flask import Flask
 from flask import send_file
 import cv2
@@ -64,4 +65,4 @@ def metrics():
 
 if __name__ == '__main__':
     # local development server. 
-    APP.run(debug=True)
+    APP.run(threaded=True, debug=True)

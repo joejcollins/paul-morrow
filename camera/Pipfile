@@ -6,9 +6,10 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-opencv-python-headless = "*"
+opencv-contrib-python = "*"
 flask = "*"
 cognitive-face = "*"
+numpy = "*"
 pip = "*"
 prometheus-client = "*"
 
