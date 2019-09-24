@@ -18,10 +18,10 @@ def capture_image():
         raise Exception("Could not open video device")
     # Read picture. ret === True on success
     has_no_errors, frame = video_capture.read()
-    if has_no_errors:
-        cv2.imwrite('capture.png', frame)
     # Close device
     video_capture.release()
+    if has_no_errors:
+        cv2.imwrite('capture.png', frame)
     return send_file('capture.png', mimetype='image/png')
 
 @APP.route('/how_many_faces')
