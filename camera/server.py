@@ -17,8 +17,6 @@ def capture_image():
     if not video_capture.isOpened():
         raise Exception("Could not open video device")
     # Read picture. ret === True on success
-    video_capture.set(10, 0.1) # brightness
-    video_capture.set(15, 0.1) # exposure
     has_no_errors, frame = video_capture.read()
     # Close device
     video_capture.release()
